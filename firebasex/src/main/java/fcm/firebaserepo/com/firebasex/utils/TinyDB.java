@@ -9,7 +9,8 @@ import android.graphics.BitmapFactory;
 import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
-
+import android.util.Log;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.gson.Gson;
 
 import java.io.File;
@@ -36,8 +37,18 @@ public class TinyDB {
         else return instance = new TinyDB(context);
     }
 
+    public static void subScribeNew(String topic) {
+        FirebaseMessaging.getInstance().subscribeToTopic(topic);
+
+    }
+    public static void logi(String logd) {
+        Log.d("MahboobKn",logd);
+
+    }
+
     /**
      * Check if external storage is writable or not
+     * mahboob
      *
      * @return true if writable, false otherwise
      */
