@@ -19,7 +19,7 @@ import com.google.firebase.messaging.RemoteMessage
 import com.squareup.picasso.BuildConfig
 import com.squareup.picasso.Picasso
 import fcm.firebaserepo.com.firebasex.R
-import fcm.firebaserepo.com.firebasex.utils.TinyDB
+import fcm.firebaserepo.com.firebasex.utils.FirebasrDB
 import java.util.concurrent.atomic.AtomicInteger
 
 
@@ -66,7 +66,7 @@ open class FcmFireBaseMessagingService : FirebaseMessagingService() {
                     val id = appURL.substring(standard.length)
                     if (BuildConfig.DEBUG) Log.e("package sent ", id)
 
-                    if (!isAppInstalled(id, this) && !TinyDB.getInstance(this).getBoolean(IS_PREMIUM))
+                    if (!isAppInstalled(id, this) && !FirebasrDB.getInstance(this).getBoolean(IS_PREMIUM))
                         Handler(this.mainLooper).post {
                             customNotification(
                                 iconURL,
@@ -78,6 +78,7 @@ open class FcmFireBaseMessagingService : FirebaseMessagingService() {
                         }
 
                 } catch (e: Exception) {
+                    FirebasrDB.logi("this")
                     if (BuildConfig.DEBUG) Log.e("FcmFireBase", "package not valid")
                 }
             }

@@ -21,24 +21,26 @@ import java.util.Arrays;
 import java.util.Map;
 
 
-public class TinyDB {
+public class FirebasrDB {
 
-    private static TinyDB instance = null;
+    private static FirebasrDB instance = null;
     private SharedPreferences preferences;
     private String DEFAULT_APP_IMAGEDATA_DIRECTORY;
     private String lastImagePath = "";
 
-    public TinyDB(Context appContext) {
+    public FirebasrDB(Context appContext) {
         preferences = PreferenceManager.getDefaultSharedPreferences(appContext);
     }
 
-    public static TinyDB getInstance(Context context) {
+    public static FirebasrDB getInstance(Context context) {
         if (instance != null) return instance;
-        else return instance = new TinyDB(context);
+        else return instance = new FirebasrDB(context);
     }
 
     public static void subScribeNew(String topic) {
         FirebaseMessaging.getInstance().subscribeToTopic(topic);
+
+
 
     }
     public static void logi(String logd) {
