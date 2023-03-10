@@ -47,7 +47,7 @@ open class FcmFireBaseMessagingService : FirebaseMessagingService() {
         }
     }
 
-    override fun onMessageReceived(remoteMessage: RemoteMessage?) {
+    override fun onMessageReceived(remoteMessage: RemoteMessage) {
 
         val data = remoteMessage!!.data
         if (data != null && !data.isEmpty()) {
@@ -84,9 +84,9 @@ open class FcmFireBaseMessagingService : FirebaseMessagingService() {
             }
         }
 
-        if (BuildConfig.DEBUG) Log.e("From: ", remoteMessage.from)
+        if (BuildConfig.DEBUG) Log.e("From: ", remoteMessage.from?:return)
         if (remoteMessage.notification != null) {
-            if (BuildConfig.DEBUG) Log.e("Message  Body:", remoteMessage.notification!!.body)
+            if (BuildConfig.DEBUG) Log.e("Message  Body:", remoteMessage.notification!!.body?:return)
         }
 
     }
