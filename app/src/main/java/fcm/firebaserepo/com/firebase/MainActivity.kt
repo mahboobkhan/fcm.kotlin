@@ -1,6 +1,6 @@
 package fcm.firebaserepo.com.firebase
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import fcm.firebaserepo.com.firebasex.utils.SubscribeTopic
 import fcm.firebaserepo.com.firebasex.utils.FirebasrDB
